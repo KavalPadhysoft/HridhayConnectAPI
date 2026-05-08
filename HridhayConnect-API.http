@@ -1,0 +1,6 @@
+@HridhayConnect_API_HostAddress = http://localhost:5115
+
+GET {{HridhayConnect_API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
