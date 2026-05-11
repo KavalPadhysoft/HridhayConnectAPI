@@ -62,7 +62,7 @@ namespace HridhayConnect_API.Controllers
                 if (model.Order.CustomerId == null || model.Order.CustomerId <= 0)
                 {
                     CommonViewModel.IsSuccess = false;
-                    CommonViewModel.Message = "Please Select Customer";
+                    CommonViewModel.Message = "Please Select Shop Name";
                     CommonViewModel.StatusCode = ResponseStatusCode.Error;
                     return Ok(CommonViewModel);
                 }
@@ -238,9 +238,9 @@ namespace HridhayConnect_API.Controllers
 
         [HttpGet("[Action]")]
         [AllowAnonymous]
-        public async Task<IActionResult> GetOrderLayoutdata(long id, string status = "")
+        public async Task<IActionResult> GetOrderLayoutdata(long id)
         {
-            var data = await _orderRepository.GetOrderLayoutdata(id, status);
+            var data = await _orderRepository.GetOrderLayoutdata(id);
 
             if (data != null)
             {
@@ -253,6 +253,28 @@ namespace HridhayConnect_API.Controllers
                 CommonViewModel.IsSuccess = false;
                 CommonViewModel.StatusCode = ResponseStatusCode.NotFound;
                 CommonViewModel.Message = "Order not found";
+            }
+
+            return Ok(CommonViewModel);
+        }
+
+        [HttpGet("[Action]")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetDeliveryLayoutdata(long id)
+        {
+            var data = await _orderRepository.GetDeliveryLayoutdata(id);
+
+            if (data != null)
+            {
+                CommonViewModel.IsSuccess = true;
+                CommonViewModel.StatusCode = ResponseStatusCode.Success;
+                CommonViewModel.Data = data;
+            }
+            else
+            {
+                CommonViewModel.IsSuccess = false;
+                CommonViewModel.StatusCode = ResponseStatusCode.NotFound;
+                CommonViewModel.Message = "Delivery  not found";
             }
 
             return Ok(CommonViewModel);

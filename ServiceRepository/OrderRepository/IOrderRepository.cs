@@ -15,6 +15,7 @@ namespace HridhayConnect_API.ServiceRepository.OrderRepository
         Task<Orders?> GetOrderNo();
         Task<(bool IsSuccess, string Message, long Id, List<string> Extra)> DeleteByOrderId(long id);
 
-        Task<OrderFullDTO?> GetOrderLayoutdata(long id , string Status = "");
+        Task<OrderFullDTO?> GetOrderLayoutdata(long id);
+        Task<OrderFullDTO?> GetDeliveryLayoutdata(long id);
     }
 }

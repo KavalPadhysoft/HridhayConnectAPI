@@ -56,7 +56,7 @@ namespace HridhayConnect_API.Controllers
                 if (paymentCollection.CustomerId == null || paymentCollection.CustomerId <= 0)
                 {
                     CommonViewModel.IsSuccess = false;
-                    CommonViewModel.Message = "Please Select Customer";
+                    CommonViewModel.Message = "Please Select Shop Name";
                     CommonViewModel.StatusCode = ResponseStatusCode.Error;
                     return Ok(CommonViewModel);
                 }

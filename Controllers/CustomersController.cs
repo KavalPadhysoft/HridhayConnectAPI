@@ -54,7 +54,7 @@ namespace HridhayConnect_API.Controllers
         {
             try
             {
-                var Name = _validation.ValidateRequired(customers.Name, "Customer Name"); 
+                var Name = _validation.ValidateRequired(customers.Name, "Shop Name"); 
                 if (!Name.IsSuccess) { return Ok(Name); }
                 var OwnerName = _validation.ValidateRequired(customers.OwnerName, "Owner Name");
                 if (!OwnerName.IsSuccess) { return Ok(OwnerName); }

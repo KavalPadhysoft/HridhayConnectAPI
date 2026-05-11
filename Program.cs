@@ -2,6 +2,7 @@
 using HridhayConnect_API.Infra;
 using HridhayConnect_API.ServiceRepository.CategoryRepository;
 using HridhayConnect_API.ServiceRepository.ChangePasswordRepository;
+using HridhayConnect_API.ServiceRepository.CustomerLedgerRepository;
 using HridhayConnect_API.ServiceRepository.CustomersRepository;
 using HridhayConnect_API.ServiceRepository.DashboardRepository;
 using HridhayConnect_API.ServiceRepository.DeliveriesRepository;
@@ -117,6 +118,7 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IDeliveriesRepository, DeliveriesRepository>();
 builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
 builder.Services.AddScoped<IPaymentCollectionRepository, PaymentCollectionRepository>();
+builder.Services.AddScoped<ICustomerLedgerRepository, CustomerLedgerRepository>();
 builder.Services.AddScoped<ValidationService>();
 
 

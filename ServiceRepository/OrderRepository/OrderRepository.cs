@@ -145,12 +145,11 @@ namespace HridhayConnect_API.ServiceRepository.OrderRepository
                 throw ex;
             }
         }
-        public async Task<OrderFullDTO?> GetOrderLayoutdata(long id , string Status = "")
+        public async Task<OrderFullDTO?> GetOrderLayoutdata(long id)
         {
             List<SqlParameter> parameters = new()
             {
-                new SqlParameter("@Id", id),
-                new SqlParameter("@Status", Status)
+                new SqlParameter("@Id", id)                
             };
 
             var ds = _repositoryBase.ExecuteStoredProcedureDataSet("sp_OrderLayout_Get", parameters);
@@ -166,6 +165,35 @@ namespace HridhayConnect_API.ServiceRepository.OrderRepository
             var itemsJson = Newtonsoft.Json.JsonConvert.SerializeObject(ds.Tables[1]);
             var items = Newtonsoft.Json.JsonConvert.DeserializeObject<List<OrderItem>>(itemsJson);
             
+            if (order == null) return null;
+
+            return new OrderFullDTO
+            {
+                Order = order,
+                OrderItems = items ?? new List<OrderItem>()
+            };
+        }
+
+        public async Task<OrderFullDTO?> GetDeliveryLayoutdata(long id)
+        {
+            List<SqlParameter> parameters = new()
+            {
+                new SqlParameter("@Id", id)
+            };
+
+            var ds = _repositoryBase.ExecuteStoredProcedureDataSet("sp_DeliveryLayout_Get", parameters);
+
+            if (ds == null || ds.Tables.Count < 2)
+                return null;
+
+            // 🔹 Order (first table)
+            var orderJson = Newtonsoft.Json.JsonConvert.SerializeObject(ds.Tables[0]);
+            var order = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Orders>>(orderJson)?.FirstOrDefault();
+
+            // 🔹 Items (second table)
+            var itemsJson = Newtonsoft.Json.JsonConvert.SerializeObject(ds.Tables[1]);
+            var items = Newtonsoft.Json.JsonConvert.DeserializeObject<List<OrderItem>>(itemsJson);
+
             if (order == null) return null;
 
             return new OrderFullDTO
