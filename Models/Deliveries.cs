@@ -16,6 +16,7 @@ namespace HridhayConnect_API.Models
             public DateTime? Delivery_Date { get; set; }
             public int? No_Of_Items { get; set; }
             public string? Order_No { get; set; }
+            public string? Delivery_Challan_No { get; set; }
             public string? CustomerName { get; set; }
             public string? SalesPersonName { get; set; }
             public decimal? Total_Amount { get; set; }           

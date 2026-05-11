@@ -10,6 +10,7 @@ using HridhayConnect_API.ServiceRepository.LovRepository;
 using HridhayConnect_API.ServiceRepository.MenuAccessRepository;
 using HridhayConnect_API.ServiceRepository.MenuRepository;
 using HridhayConnect_API.ServiceRepository.OrderRepository;
+using HridhayConnect_API.ServiceRepository.PaymentCollectionRepository;
 using HridhayConnect_API.ServiceRepository.RoleRepository;
 using HridhayConnect_API.ServiceRepository.UserRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -115,6 +116,7 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IDeliveriesRepository, DeliveriesRepository>();
 builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
+builder.Services.AddScoped<IPaymentCollectionRepository, PaymentCollectionRepository>();
 builder.Services.AddScoped<ValidationService>();
 
 
@@ -144,7 +146,7 @@ app.UseSwagger(); // for live index
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "CommmonProject v1");
-    //c.RoutePrefix = string.Empty; // ?? IMPORTANT
+    c.RoutePrefix = string.Empty; // ?? IMPORTANT
 });
 
 
