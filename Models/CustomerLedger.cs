@@ -9,7 +9,7 @@ namespace HridhayConnect_API.Models
     {
         [Key]
         public long Id { get; set; }
-        public DateTime? LedgerDate { get; set; }
+        public DateTime? Date { get; set; }
         public string? ReferenceNo { get; set; }      
         public string? Description { get; set; }      
         public decimal? Debit { get; set; }      
