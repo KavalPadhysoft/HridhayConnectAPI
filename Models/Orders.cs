@@ -24,6 +24,7 @@ namespace HridhayConnect_API.Models
             public string? Email { get; set; }
             public string? Address { get; set; }
             public decimal? Total_Amount { get; set; }           
+            public decimal? Delivery_Amount { get; set; }           
             public bool? IsActive { get; set; }
             public bool? IsDeleted { get; set; }
             public string? Notes { get; set; }
